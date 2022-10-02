@@ -2,6 +2,8 @@ import 'package:tic_tac_toe/audio/sfx.dart';
 
 import '../gen/assets.gen.dart';
 
+typedef WinCombo = List<int>;
+
 enum Mark {
   zero,
   cross;

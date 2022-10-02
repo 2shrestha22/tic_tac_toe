@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BoardState {
-  List<Mark?> get marks => throw _privateConstructorUsedError;
+  List<Mark?> get board => throw _privateConstructorUsedError;
 
   /// Turn of player
   Mark get turn => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $BoardStateCopyWith<$Res> {
           BoardState value, $Res Function(BoardState) then) =
       _$BoardStateCopyWithImpl<$Res>;
   $Res call(
-      {List<Mark?> marks,
+      {List<Mark?> board,
       Mark turn,
       Mark? winner,
       bool finished,
@@ -52,16 +52,16 @@ class _$BoardStateCopyWithImpl<$Res> implements $BoardStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? marks = freezed,
+    Object? board = freezed,
     Object? turn = freezed,
     Object? winner = freezed,
     Object? finished = freezed,
     Object? winCombo = freezed,
   }) {
     return _then(_value.copyWith(
-      marks: marks == freezed
-          ? _value.marks
-          : marks // ignore: cast_nullable_to_non_nullable
+      board: board == freezed
+          ? _value.board
+          : board // ignore: cast_nullable_to_non_nullable
               as List<Mark?>,
       turn: turn == freezed
           ? _value.turn
@@ -91,7 +91,7 @@ abstract class _$$_BoardStateCopyWith<$Res>
       __$$_BoardStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<Mark?> marks,
+      {List<Mark?> board,
       Mark turn,
       Mark? winner,
       bool finished,
@@ -110,16 +110,16 @@ class __$$_BoardStateCopyWithImpl<$Res> extends _$BoardStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? marks = freezed,
+    Object? board = freezed,
     Object? turn = freezed,
     Object? winner = freezed,
     Object? finished = freezed,
     Object? winCombo = freezed,
   }) {
     return _then(_$_BoardState(
-      marks: marks == freezed
-          ? _value._marks
-          : marks // ignore: cast_nullable_to_non_nullable
+      board: board == freezed
+          ? _value._board
+          : board // ignore: cast_nullable_to_non_nullable
               as List<Mark?>,
       turn: turn == freezed
           ? _value.turn
@@ -145,20 +145,20 @@ class __$$_BoardStateCopyWithImpl<$Res> extends _$BoardStateCopyWithImpl<$Res>
 
 class _$_BoardState extends _BoardState {
   const _$_BoardState(
-      {required final List<Mark?> marks,
+      {required final List<Mark?> board,
       required this.turn,
       this.winner,
       required this.finished,
       final List<int>? winCombo})
-      : _marks = marks,
+      : _board = board,
         _winCombo = winCombo,
         super._();
 
-  final List<Mark?> _marks;
+  final List<Mark?> _board;
   @override
-  List<Mark?> get marks {
+  List<Mark?> get board {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_marks);
+    return EqualUnmodifiableListView(_board);
   }
 
   /// Turn of player
@@ -179,7 +179,7 @@ class _$_BoardState extends _BoardState {
 
   @override
   String toString() {
-    return 'BoardState(marks: $marks, turn: $turn, winner: $winner, finished: $finished, winCombo: $winCombo)';
+    return 'BoardState(board: $board, turn: $turn, winner: $winner, finished: $finished, winCombo: $winCombo)';
   }
 
   @override
@@ -187,7 +187,7 @@ class _$_BoardState extends _BoardState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BoardState &&
-            const DeepCollectionEquality().equals(other._marks, _marks) &&
+            const DeepCollectionEquality().equals(other._board, _board) &&
             const DeepCollectionEquality().equals(other.turn, turn) &&
             const DeepCollectionEquality().equals(other.winner, winner) &&
             const DeepCollectionEquality().equals(other.finished, finished) &&
@@ -197,7 +197,7 @@ class _$_BoardState extends _BoardState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_marks),
+      const DeepCollectionEquality().hash(_board),
       const DeepCollectionEquality().hash(turn),
       const DeepCollectionEquality().hash(winner),
       const DeepCollectionEquality().hash(finished),
@@ -211,7 +211,7 @@ class _$_BoardState extends _BoardState {
 
 abstract class _BoardState extends BoardState {
   const factory _BoardState(
-      {required final List<Mark?> marks,
+      {required final List<Mark?> board,
       required final Mark turn,
       final Mark? winner,
       required final bool finished,
@@ -219,7 +219,7 @@ abstract class _BoardState extends BoardState {
   const _BoardState._() : super._();
 
   @override
-  List<Mark?> get marks;
+  List<Mark?> get board;
   @override
 
   /// Turn of player

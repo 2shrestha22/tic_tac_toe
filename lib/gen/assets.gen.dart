@@ -49,6 +49,11 @@ class Assets {
 
   static const $AssetsAudioGen audio = $AssetsAudioGen();
   static const $AssetsIconsGen icons = $AssetsIconsGen();
+  static const AssetGenImage launcherIcon =
+      AssetGenImage('assets/launcher_icon.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [launcherIcon];
 }
 
 class AssetGenImage {

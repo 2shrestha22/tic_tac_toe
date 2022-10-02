@@ -71,7 +71,7 @@ class BoardPage extends HookConsumerWidget {
                         crossAxisCount: 3,
                       ),
                       itemBuilder: (context, index) {
-                        final box = boardState.marks[index];
+                        final box = boardState.board[index];
                         return GestureDetector(
                           behavior: HitTestBehavior.opaque,
                           onTap: () {

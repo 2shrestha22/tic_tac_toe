@@ -14,17 +14,17 @@ class BoardStateNotifier extends StateNotifier<BoardState> {
 
   /// When human taps on board
   void onMarkFill(int pos) {
-    if (state.marks[pos] != null) return;
+    if (state.board[pos] != null) return;
 
-    final newMarks = List<Mark?>.from(state.marks)..[pos] = state.turn;
+    final newMarks = List<Mark?>.from(state.board)..[pos] = state.turn;
 
     state = state.copyWith(
-      marks: newMarks,
+      board: newMarks,
       turn: state.turn.complement,
     );
-    final winCombo = _checkWin(
+    final winCombo = checkWin(
       turn: state.turn.complement,
-      marks: state.marks,
+      marks: state.board,
     );
 
     if (winCombo != null) {
@@ -34,7 +34,7 @@ class BoardStateNotifier extends StateNotifier<BoardState> {
         winCombo: winCombo,
         finished: true,
       );
-    } else if (!state.marks.contains(null)) {
+    } else if (!state.board.contains(null)) {
       // game is draw
       state = state.copyWith(finished: true);
     }
@@ -42,7 +42,7 @@ class BoardStateNotifier extends StateNotifier<BoardState> {
 }
 
 /// Returns winCombo
-List<int>? _checkWin({
+List<int>? checkWin({
   required Mark turn,
   required List<Mark?> marks,
 }) {

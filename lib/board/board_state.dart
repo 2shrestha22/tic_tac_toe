@@ -4,21 +4,23 @@ import '../model/mark.dart';
 
 part 'board_state.freezed.dart';
 
+typedef Board = List<Mark?>;
+
 @freezed
 class BoardState with _$BoardState {
   const BoardState._();
   const factory BoardState({
-    required List<Mark?> marks,
+    required Board board,
 
     /// Turn of player
     required Mark turn,
     Mark? winner,
     required bool finished,
-    List<int>? winCombo,
+    WinCombo? winCombo,
   }) = _BoardState;
 
   factory BoardState.initial() => BoardState(
-        marks: List<Mark?>.filled(9, null),
+        board: Board.filled(9, null),
         turn: Mark.cross,
         winner: null,
         finished: false,
