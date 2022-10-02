@@ -24,36 +24,6 @@ class _BoardState extends ConsumerState<Board> {
       if (previous?.winner == null) {
         audioPlayer.playSfx(next.turn.complement.sfx);
       }
-
-      if (next.winner != null) {
-        alert(BuildContext context) => AlertDialog(
-              content: Row(
-                children: [
-                  SvgPicture.asset(
-                    next.winner!.iconPath,
-                    width: 40,
-                  ),
-                  Text(
-                    ' won',
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ],
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text('Ok'),
-                )
-              ],
-            );
-
-        // showDialog(
-        //   context: context,
-        //   builder: (context) => alert(context),
-        // ).then((value) => ref.refresh(aiProvider));
-      }
     });
 
     buildBox(Mark? box) {
@@ -68,7 +38,7 @@ class _BoardState extends ConsumerState<Board> {
           return buildBox(box);
         } else {
           return Opacity(
-            opacity: 0.5,
+            opacity: 0.1,
             child: buildBox(box),
           );
         }
@@ -78,6 +48,7 @@ class _BoardState extends ConsumerState<Board> {
     }
 
     return Scaffold(
+      // backgroundColor: const Color(0xFFC9F9FC),
       body: Center(
         child: GestureDetector(
           onTap: () {
@@ -100,9 +71,7 @@ class _BoardState extends ConsumerState<Board> {
                     onTap: () {
                       ref.read(aiProvider.notifier).onMarkFill(index);
                     },
-                    child: Center(
-                      child: buildAnimatedBox(box, index, boardState.winCombo),
-                    ),
+                    child: buildAnimatedBox(box, index, boardState.winCombo),
                   );
                 },
               ),
