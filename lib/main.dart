@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tic_tac_toe/board.dart';
+import 'package:tic_tac_toe/board/board_page.dart';
 import 'package:tic_tac_toe/sound/audio_controller.dart';
 
 Future<void> main() async {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
-      home: const Board(),
+      home: const BoardPage(),
     );
   }
 }

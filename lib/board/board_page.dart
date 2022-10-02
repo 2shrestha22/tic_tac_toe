@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tic_tac_toe/ai.dart';
+import 'package:tic_tac_toe/board/board_state_notifier.dart';
 import 'package:tic_tac_toe/gen/assets.gen.dart';
 import 'package:tic_tac_toe/sound/audio_controller.dart';
 
-import 'mark.dart';
+import '../mark.dart';
 
-class Board extends StatefulHookConsumerWidget {
-  const Board({super.key});
+class BoardPage extends HookConsumerWidget {
+  const BoardPage({super.key});
 
   @override
-  ConsumerState<Board> createState() => _BoardState();
-}
-
-class _BoardState extends ConsumerState<Board> {
-  @override
-  Widget build(BuildContext context) {
-    final boardState = ref.watch(aiProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final boardState = ref.watch(boardProvider);
     final audioPlayer = ref.watch(audioControllerProvider.notifier);
 
-    ref.listen(aiProvider, (previous, next) async {
+    ref.listen(boardProvider, (previous, next) async {
       if (!(previous?.finished ?? false)) {
         audioPlayer.playSfx(next.turn.complement.sfx);
       }
@@ -53,7 +48,7 @@ class _BoardState extends ConsumerState<Board> {
         child: GestureDetector(
           onTap: () {
             if (boardState.finished) {
-              ref.refresh(aiProvider);
+              ref.refresh(boardProvider);
             }
           },
           child: AbsorbPointer(
@@ -69,7 +64,7 @@ class _BoardState extends ConsumerState<Board> {
                   final box = boardState.marks[index];
                   return GestureDetector(
                     onTap: () {
-                      ref.read(aiProvider.notifier).onMarkFill(index);
+                      ref.read(boardProvider.notifier).onMarkFill(index);
                     },
                     child: buildAnimatedBox(box, index, boardState.winCombo),
                   );

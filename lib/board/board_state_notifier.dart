@@ -2,13 +2,14 @@ import 'dart:developer';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tic_tac_toe/mark.dart';
-import 'board_state.dart';
+import '../board_state.dart';
 
 // By using a provider, this allows us to mock/override the value exposed.
-final aiProvider = StateNotifierProvider<Ai, BoardState>((_) => Ai());
+final boardProvider = StateNotifierProvider<BoardStateNotifier, BoardState>(
+    (_) => BoardStateNotifier());
 
-class Ai extends StateNotifier<BoardState> {
-  Ai() : super(BoardState.initial());
+class BoardStateNotifier extends StateNotifier<BoardState> {
+  BoardStateNotifier() : super(BoardState.initial());
 
   /// When human taps on board
   void onMarkFill(int pos) {
