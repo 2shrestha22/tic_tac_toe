@@ -1,6 +1,6 @@
-import 'package:tic_tac_toe/sound/sfx.dart';
+import 'package:tic_tac_toe/audio/sfx.dart';
 
-import 'gen/assets.gen.dart';
+import '../gen/assets.gen.dart';
 
 enum Mark {
   zero,

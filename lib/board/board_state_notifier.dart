@@ -1,8 +1,9 @@
 import 'dart:developer';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tic_tac_toe/mark.dart';
-import '../board_state.dart';
+import 'package:tic_tac_toe/constants.dart';
+import 'package:tic_tac_toe/model/mark.dart';
+import 'board_state.dart';
 
 // By using a provider, this allows us to mock/override the value exposed.
 final boardProvider = StateNotifierProvider<BoardStateNotifier, BoardState>(
@@ -57,7 +58,7 @@ List<int>? _checkWin({
   }
 
   List<int>? winCombo;
-  for (var combo in winCombos) {
+  for (var combo in Constants.winCombos3x3) {
     final win = combo.every((e) => plays.contains(e));
     if (win) {
       winCombo = combo;

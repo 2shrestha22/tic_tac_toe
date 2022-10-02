@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tic_tac_toe/board/board_page.dart';
-import 'package:tic_tac_toe/sound/audio_controller.dart';
+import 'package:tic_tac_toe/audio/audio_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

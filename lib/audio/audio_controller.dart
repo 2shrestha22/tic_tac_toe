@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tic_tac_toe/const.dart';
-import 'package:tic_tac_toe/sound/sfx.dart';
+import 'package:tic_tac_toe/constants.dart';
+import 'package:tic_tac_toe/audio/sfx.dart';
 
 final audioControllerProvider =
     StateNotifierProvider<AudioController, bool>((_) => AudioController(true));
@@ -10,7 +10,7 @@ final audioControllerProvider =
 class AudioController extends StateNotifier<bool> {
   AudioController(super.state) {
     _audioCache = AudioCache(
-      prefix: Values.audioPrefix,
+      prefix: Constants.audioPrefix,
     );
   }
 

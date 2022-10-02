@@ -1,4 +1,4 @@
-import 'package:tic_tac_toe/const.dart';
+import 'package:tic_tac_toe/constants.dart';
 import 'package:tic_tac_toe/gen/assets.gen.dart';
 
 enum Sfx {
@@ -17,7 +17,7 @@ enum Sfx {
 
   String _getPath(String path) {
     return path.replaceFirst(
-      RegExp(Values.audioPrefix),
+      RegExp(Constants.audioPrefix),
       '',
     );
   }
