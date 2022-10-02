@@ -18,17 +18,17 @@ class $AssetsAudioGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
-  /// File path: assets/icons/board.svg
-  String get board => 'assets/icons/board.svg';
-
   /// File path: assets/icons/cross.svg
   String get cross => 'assets/icons/cross.svg';
+
+  /// File path: assets/icons/grid.svg
+  String get grid => 'assets/icons/grid.svg';
 
   /// File path: assets/icons/zero.svg
   String get zero => 'assets/icons/zero.svg';
 
   /// List of all assets
-  List<String> get values => [board, cross, zero];
+  List<String> get values => [cross, grid, zero];
 }
 
 class $AssetsAudioSfxGen {

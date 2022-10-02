@@ -23,7 +23,7 @@ class BoardPage extends HookConsumerWidget {
 
     buildBox(Mark? box) {
       return box == null
-          ? SvgPicture.asset(Assets.icons.board)
+          ? const SizedBox.shrink()
           : SvgPicture.asset(box.iconPath);
     }
 
@@ -44,31 +44,46 @@ class BoardPage extends HookConsumerWidget {
 
     return Scaffold(
       // backgroundColor: const Color(0xFFC9F9FC),
-      body: Center(
-        child: GestureDetector(
-          onTap: () {
-            if (boardState.finished) {
-              ref.refresh(boardProvider);
-            }
-          },
-          child: AbsorbPointer(
-            absorbing: boardState.finished,
-            child: AspectRatio(
-              aspectRatio: 1.0,
-              child: GridView.builder(
-                itemCount: 9,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Center(
+          child: GestureDetector(
+            onTap: () {
+              if (boardState.finished) {
+                ref.refresh(boardProvider);
+              }
+            },
+            child: AbsorbPointer(
+              absorbing: boardState.finished,
+              child: AspectRatio(
+                aspectRatio: 1.0,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    SvgPicture.asset(
+                      Assets.icons.grid,
+                      color: const Color(0xFFDEE0E2),
+                    ),
+                    GridView.builder(
+                      itemCount: 9,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 3,
+                      ),
+                      itemBuilder: (context, index) {
+                        final box = boardState.marks[index];
+                        return GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {
+                            ref.read(boardProvider.notifier).onMarkFill(index);
+                          },
+                          child:
+                              buildAnimatedBox(box, index, boardState.winCombo),
+                        );
+                      },
+                    ),
+                  ],
                 ),
-                itemBuilder: (context, index) {
-                  final box = boardState.marks[index];
-                  return GestureDetector(
-                    onTap: () {
-                      ref.read(boardProvider.notifier).onMarkFill(index);
-                    },
-                    child: buildAnimatedBox(box, index, boardState.winCombo),
-                  );
-                },
               ),
             ),
           ),
