@@ -21,7 +21,7 @@ class _BoardState extends ConsumerState<Board> {
     final audioPlayer = ref.watch(audioControllerProvider.notifier);
 
     ref.listen(aiProvider, (previous, next) async {
-      if (previous?.winner == null) {
+      if (!(previous?.finished ?? false)) {
         audioPlayer.playSfx(next.turn.complement.sfx);
       }
     });

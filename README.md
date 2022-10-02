@@ -1,6 +1,6 @@
-# tic_tac_toe
+# Tic Tac Toe [WIP]
 
-A new Flutter project.
+Tic-tac-toe game made with Flutter.
 
 ## Getting Started
 
@@ -15,5 +15,13 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+
+## Resources
 UI: https://www.figma.com/community/file/893942075601804557
+
 Click Sound: Sound Effect by <a href="https://pixabay.com/users/666herohero-25759907/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=21156">666HeroHero</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=21156">Pixabay</a>
+
+
+## Images
+![Screenshot](resources/screenshot.png)
+![Video](resources/video.gif)
