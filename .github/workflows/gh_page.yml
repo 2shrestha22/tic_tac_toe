@@ -18,7 +18,6 @@ jobs:
     - run: flutter --version
     - run: flutter pub get
     - run: flutter build web --base-href="/tic_tac_toe/"
-    - run: flutter build web
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
