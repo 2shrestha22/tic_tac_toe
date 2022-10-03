@@ -9,4 +9,9 @@ class Ai {
     required Board board,
     required Mark mark,
   }) {}
+
+  void minimax({
+    required Board board,
+    required Mark mark,
+  }) {}
 }
