@@ -1,29 +1,23 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../model/mark.dart';
+import '../../engine/board/board.dart';
+import '../../engine/board/mark.dart';
 
 part 'board_state.freezed.dart';
 
-typedef Board = List<Mark?>;
+// typedef Board = List<Mark?>;
 
 @freezed
 class BoardState with _$BoardState {
   const BoardState._();
   const factory BoardState({
-    required Board board,
+    required List<Box> boxes,
+    required int boardSize,
 
     /// Turn of player
     required Mark turn,
     Mark? winner,
     required bool finished,
-    WinCombo? winCombo,
+    List<Box>? winCombo,
   }) = _BoardState;
-
-  factory BoardState.initial() => BoardState(
-        board: Board.filled(9, null),
-        turn: Mark.cross,
-        winner: null,
-        finished: false,
-        winCombo: null,
-      );
 }

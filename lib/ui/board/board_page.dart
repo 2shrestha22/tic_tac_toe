@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:tic_tac_toe/board/board_state_notifier.dart';
 import 'package:tic_tac_toe/gen/assets.gen.dart';
 import 'package:tic_tac_toe/audio/audio_controller.dart';
 
-import '../model/mark.dart';
+import '../../engine/board/board.dart';
+import 'board_state_notifier.dart';
 
 class BoardPage extends HookConsumerWidget {
   const BoardPage({super.key});
@@ -21,15 +21,15 @@ class BoardPage extends HookConsumerWidget {
       }
     });
 
-    buildBox(Mark? box) {
-      return box == null
+    buildBox(Box box) {
+      return box.mark == null
           ? const SizedBox.shrink()
-          : SvgPicture.asset(box.iconPath);
+          : SvgPicture.asset(box.mark!.iconPath);
     }
 
-    buildAnimatedBox(Mark? box, int index, List<int>? winCombo) {
+    buildAnimatedBox(Box box, int index, List<Box>? winCombo) {
       if (winCombo != null) {
-        if (winCombo.contains(index)) {
+        if (winCombo.contains(box)) {
           return buildBox(box);
         } else {
           return Opacity(
@@ -71,7 +71,7 @@ class BoardPage extends HookConsumerWidget {
                         crossAxisCount: 3,
                       ),
                       itemBuilder: (context, index) {
-                        final box = boardState.board[index];
+                        final box = boardState.boxes[index];
                         return GestureDetector(
                           behavior: HitTestBehavior.opaque,
                           onTap: () {

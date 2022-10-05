@@ -1,12 +1,19 @@
-import 'package:tic_tac_toe/audio/sfx.dart';
-
-import '../gen/assets.gen.dart';
-
-typedef WinCombo = List<int>;
+import '../../audio/sfx.dart';
+import '../../gen/assets.gen.dart';
 
 enum Mark {
   zero,
   cross;
+
+  /// Get complement Mark
+  Mark get complement {
+    switch (this) {
+      case Mark.cross:
+        return Mark.zero;
+      case Mark.zero:
+        return Mark.cross;
+    }
+  }
 
   String get iconPath {
     switch (this) {
@@ -26,13 +33,13 @@ enum Mark {
     }
   }
 
-  /// Get complement Mark
-  Mark get complement {
+  @override
+  String toString() {
     switch (this) {
       case Mark.cross:
-        return Mark.zero;
+        return 'X';
       case Mark.zero:
-        return Mark.cross;
+        return 'O';
     }
   }
 }

@@ -16,13 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BoardState {
-  List<Mark?> get board => throw _privateConstructorUsedError;
+  List<Box> get boxes => throw _privateConstructorUsedError;
+  int get boardSize => throw _privateConstructorUsedError;
 
   /// Turn of player
   Mark get turn => throw _privateConstructorUsedError;
   Mark? get winner => throw _privateConstructorUsedError;
   bool get finished => throw _privateConstructorUsedError;
-  List<int>? get winCombo => throw _privateConstructorUsedError;
+  List<Box>? get winCombo => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BoardStateCopyWith<BoardState> get copyWith =>
@@ -35,11 +36,12 @@ abstract class $BoardStateCopyWith<$Res> {
           BoardState value, $Res Function(BoardState) then) =
       _$BoardStateCopyWithImpl<$Res>;
   $Res call(
-      {List<Mark?> board,
+      {List<Box> boxes,
+      int boardSize,
       Mark turn,
       Mark? winner,
       bool finished,
-      List<int>? winCombo});
+      List<Box>? winCombo});
 }
 
 /// @nodoc
@@ -52,17 +54,22 @@ class _$BoardStateCopyWithImpl<$Res> implements $BoardStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? board = freezed,
+    Object? boxes = freezed,
+    Object? boardSize = freezed,
     Object? turn = freezed,
     Object? winner = freezed,
     Object? finished = freezed,
     Object? winCombo = freezed,
   }) {
     return _then(_value.copyWith(
-      board: board == freezed
-          ? _value.board
-          : board // ignore: cast_nullable_to_non_nullable
-              as List<Mark?>,
+      boxes: boxes == freezed
+          ? _value.boxes
+          : boxes // ignore: cast_nullable_to_non_nullable
+              as List<Box>,
+      boardSize: boardSize == freezed
+          ? _value.boardSize
+          : boardSize // ignore: cast_nullable_to_non_nullable
+              as int,
       turn: turn == freezed
           ? _value.turn
           : turn // ignore: cast_nullable_to_non_nullable
@@ -78,7 +85,7 @@ class _$BoardStateCopyWithImpl<$Res> implements $BoardStateCopyWith<$Res> {
       winCombo: winCombo == freezed
           ? _value.winCombo
           : winCombo // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+              as List<Box>?,
     ));
   }
 }
@@ -91,11 +98,12 @@ abstract class _$$_BoardStateCopyWith<$Res>
       __$$_BoardStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<Mark?> board,
+      {List<Box> boxes,
+      int boardSize,
       Mark turn,
       Mark? winner,
       bool finished,
-      List<int>? winCombo});
+      List<Box>? winCombo});
 }
 
 /// @nodoc
@@ -110,17 +118,22 @@ class __$$_BoardStateCopyWithImpl<$Res> extends _$BoardStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? board = freezed,
+    Object? boxes = freezed,
+    Object? boardSize = freezed,
     Object? turn = freezed,
     Object? winner = freezed,
     Object? finished = freezed,
     Object? winCombo = freezed,
   }) {
     return _then(_$_BoardState(
-      board: board == freezed
-          ? _value._board
-          : board // ignore: cast_nullable_to_non_nullable
-              as List<Mark?>,
+      boxes: boxes == freezed
+          ? _value._boxes
+          : boxes // ignore: cast_nullable_to_non_nullable
+              as List<Box>,
+      boardSize: boardSize == freezed
+          ? _value.boardSize
+          : boardSize // ignore: cast_nullable_to_non_nullable
+              as int,
       turn: turn == freezed
           ? _value.turn
           : turn // ignore: cast_nullable_to_non_nullable
@@ -136,7 +149,7 @@ class __$$_BoardStateCopyWithImpl<$Res> extends _$BoardStateCopyWithImpl<$Res>
       winCombo: winCombo == freezed
           ? _value._winCombo
           : winCombo // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+              as List<Box>?,
     ));
   }
 }
@@ -145,21 +158,25 @@ class __$$_BoardStateCopyWithImpl<$Res> extends _$BoardStateCopyWithImpl<$Res>
 
 class _$_BoardState extends _BoardState {
   const _$_BoardState(
-      {required final List<Mark?> board,
+      {required final List<Box> boxes,
+      required this.boardSize,
       required this.turn,
       this.winner,
       required this.finished,
-      final List<int>? winCombo})
-      : _board = board,
+      final List<Box>? winCombo})
+      : _boxes = boxes,
         _winCombo = winCombo,
         super._();
 
-  final List<Mark?> _board;
+  final List<Box> _boxes;
   @override
-  List<Mark?> get board {
+  List<Box> get boxes {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_board);
+    return EqualUnmodifiableListView(_boxes);
   }
+
+  @override
+  final int boardSize;
 
   /// Turn of player
   @override
@@ -168,9 +185,9 @@ class _$_BoardState extends _BoardState {
   final Mark? winner;
   @override
   final bool finished;
-  final List<int>? _winCombo;
+  final List<Box>? _winCombo;
   @override
-  List<int>? get winCombo {
+  List<Box>? get winCombo {
     final value = _winCombo;
     if (value == null) return null;
     // ignore: implicit_dynamic_type
@@ -179,7 +196,7 @@ class _$_BoardState extends _BoardState {
 
   @override
   String toString() {
-    return 'BoardState(board: $board, turn: $turn, winner: $winner, finished: $finished, winCombo: $winCombo)';
+    return 'BoardState(boxes: $boxes, boardSize: $boardSize, turn: $turn, winner: $winner, finished: $finished, winCombo: $winCombo)';
   }
 
   @override
@@ -187,7 +204,8 @@ class _$_BoardState extends _BoardState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BoardState &&
-            const DeepCollectionEquality().equals(other._board, _board) &&
+            const DeepCollectionEquality().equals(other._boxes, _boxes) &&
+            const DeepCollectionEquality().equals(other.boardSize, boardSize) &&
             const DeepCollectionEquality().equals(other.turn, turn) &&
             const DeepCollectionEquality().equals(other.winner, winner) &&
             const DeepCollectionEquality().equals(other.finished, finished) &&
@@ -197,7 +215,8 @@ class _$_BoardState extends _BoardState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_board),
+      const DeepCollectionEquality().hash(_boxes),
+      const DeepCollectionEquality().hash(boardSize),
       const DeepCollectionEquality().hash(turn),
       const DeepCollectionEquality().hash(winner),
       const DeepCollectionEquality().hash(finished),
@@ -211,15 +230,18 @@ class _$_BoardState extends _BoardState {
 
 abstract class _BoardState extends BoardState {
   const factory _BoardState(
-      {required final List<Mark?> board,
+      {required final List<Box> boxes,
+      required final int boardSize,
       required final Mark turn,
       final Mark? winner,
       required final bool finished,
-      final List<int>? winCombo}) = _$_BoardState;
+      final List<Box>? winCombo}) = _$_BoardState;
   const _BoardState._() : super._();
 
   @override
-  List<Mark?> get board;
+  List<Box> get boxes;
+  @override
+  int get boardSize;
   @override
 
   /// Turn of player
@@ -229,7 +251,7 @@ abstract class _BoardState extends BoardState {
   @override
   bool get finished;
   @override
-  List<int>? get winCombo;
+  List<Box>? get winCombo;
   @override
   @JsonKey(ignore: true)
   _$$_BoardStateCopyWith<_$_BoardState> get copyWith =>
